@@ -1,32 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/reset.css">
-        
-     <!-- This is the main css style sheet  --> 
-        <link rel="stylesheet" href="css/phone.css">
-        
-     <!-- these are for developing a responsive website -->   
-        <link rel="stylesheet" media="(min-width: 768px)" href="css/tablet.css" />
-        <link rel="stylesheet" media="(min-width: 992px)" href="css/small-desktop.css" />
-        <link rel="stylesheet" media="(min-width: 1200px)" href="css/large-desktop.css" />
-        
-        <!--[if lt IE 9]>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="css/reset.css">
+
+	<!-- This is the main css style sheet  -->
+	<link rel="stylesheet" href="css/phone.css">
+
+
+	<!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
-    </head>
-    <body>
+</head>
 
-        <h1 id="jqueryworking">Hello from the Ichiban Gaijin! Click me to make sure jQUERY is working!</h1>
+<body>
+<h1>Fizz Buzz App</h1>
+<h2>enter a number between 1 - 200</h2>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script>$(function(){$("#jqueryworking").click(function(){alert("jquery is working");})});</script>
-    </body>
+<input type="text">
+<button id="single">Check a single number</button>
+    <button id="all">Show all results</button>
+<div></div>
+
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	
+	<script>
+		$(function(){              
+		    $("button#single").click(function() {
+		    var inputText = $("input").val();
+		    if (isNaN(inputText)) {
+		        alert("not a number"); 
+		    }
+		    else if (inputText < 1 || inputText > 201) {
+		        alert("a number between 1-200 please!");
+		    }
+		    else if (inputText%3 === 0  && inputText%5 === 0){
+		        alert("Fizz Buzz!");
+		    }
+		    
+		    else if (inputText%3 === 0){
+		        alert("Fizz");
+		    }
+		    else if (inputText%5 === 0) {
+		        alert("Buzz");
+		    }
+		    else { alert(inputText); }
+		     
+		});
+		
+		$("button#all").click(function() {
+		    var inputBox = $("input").val();
+		    for (i = 1 ; i < inputBox ; i++) {
+		        if (i % 5 === 0 && i % 3 === 0) {
+		            $("div").append("FIZZ-BUZZ!" +", "); 
+		        }
+		        else if (i % 5 === 0) {
+		            $("div").append("Buzz" +", "); 
+		        }
+		        else if (i % 3 === 0) {
+		                $("div").append("Fizz" + ", ");  
+		        }
+		        else {
+		            $("div").append(i + ", "); 
+		        }
+		}
+		});
+		
+		});
+	</script>
+
+
+
+
+</body>
+
 </html>
