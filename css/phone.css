@@ -41,3 +41,12 @@ div {
 	line-height: 50px;
 
 }
+
+.clearform {
+	display:none;
+}
+
+.darken {
+	background-color: rgba(74, 69, 69, 0.57);
+	color: rgba(77, 69, 69, 0.49);
+}
