@@ -21,44 +21,63 @@
 </head>
 
 <body>
-<h1>Fizz Buzz App</h1>
-<h2>enter a number between 1 - 200</h2>
+	<h1>Fizz Buzz App</h1>
+	<h2>enter a number between 1 - 200</h2>
 
-<input type="text">
-<button id="single">Check a single number</button>
-    <button id="all">Show all results</button>
-<div></div>
+	<input type="text">
+	<button id="single">Check a single number</button>
+	<button id="all">Show all results</button>
+	<div></div>
+	<button class="clearform">Clear Results</button>
 
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-	
+
 	<script>
 		$(function(){              
 		    $("button#single").click(function() {
 		    var inputText = $("input").val();
 		    if (isNaN(inputText)) {
 		        alert("not a number"); 
+		         $("input").val(" ");
 		    }
 		    else if (inputText < 1 || inputText > 201) {
 		        alert("a number between 1-200 please!");
+		         $("input").val(" ");
 		    }
 		    else if (inputText%3 === 0  && inputText%5 === 0){
 		        alert("Fizz Buzz!");
+		         $("input").val(" ");
 		    }
 		    
 		    else if (inputText%3 === 0){
 		        alert("Fizz");
+		         $("input").val(" ");
 		    }
 		    else if (inputText%5 === 0) {
 		        alert("Buzz");
+		         $("input").val(" ");
 		    }
-		    else { alert(inputText); }
+		    else { alert(inputText);
+		      $("input").val(" ");
+		       }
 		     
 		});
 		
 		$("button#all").click(function() {
 		    var inputBox = $("input").val();
-		    for (i = 1 ; i < inputBox ; i++) {
+		    if (isNaN(inputBox)) {
+		        alert("not a number"); 
+		        $("input").val(" ");
+		     }
+		     
+		     else if (inputBox < 1 || inputBox > 201) {
+		        alert("a number between 1-200 please!");
+		         $("input").val(" ");
+		     	}
+		     	else{
+		
+		     	for (i = 1 ; i < inputBox ; i++) {
 		        if (i % 5 === 0 && i % 3 === 0) {
 		            $("div").append("FIZZ-BUZZ!" +", "); 
 		        }
@@ -71,9 +90,18 @@
 		        else {
 		            $("div").append(i + ", "); 
 		        }
-		}
+		         $("input").val(" ");
+		         $("button.clearform").show();
+		         $("button#all").addClass("darken");
+		       }
+				}
 		});
-		
+		       
+		    $("button.clearform").click(function() {
+					$("div").empty();
+					$(this).hide();
+					 $("button#all").removeClass("darken");
+				})
 		});
 	</script>
 
